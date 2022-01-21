@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div style="padding: 20%; text-align: center">
+    <label for="farge">Skriv inn din favorittfarge her</label>
+        <br>
+    <input id="farge" placeholder="Eks: Rød">
+    <input type="button" id="farge" value="Send inn" onclick="brukerInput()">
+        <br>
+        <br>
+    <label for="nullstill">Nullstill bakgrunnsfarge</label>
+    <input type="button" id="nullstill" value="Nullstill" onclick="resetColor()">
+
+</div>
+</body>
+
+<script>
+
+    let farge = localStorage.farge;
+    document.body.style.backgroundColor = farge;
+    console.log("Den nåværende fargen er:" + farge)
+
+    // Henter brukerinput
+    function brukerInput() {
+            let inputEl = (document.getElementById("farge").value).toLowerCase();
+        console.log("Brukeren skrev inn:" + inputEl)
+            inputToColor(inputEl)
+    }
+
+
+    function inputToColor(inputEl) {
+
+        // localStorage("key", "value") Gjør det lettere å lese, brukes istedenfor to linjer. //localStorage("farge", "inputEl")
+            localStorage.farge = inputEl
+            farge = localStorage.farge
+        console.log("Nettsidens nye farge: " + farge)
+        document.body.style.backgroundColor = farge;
+         // localStorage.removeItem(farge)  // Fjerner localStorage for farge.
+    }
+
+    function resetColor () {
+        localStorage.removeItem("farge")
+        document.body.style.backgroundColor = "white";
+        console.log("Denne skal være udefinert:" + farge)
+    }
+
+</script>
+
+</html>
