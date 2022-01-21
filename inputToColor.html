@@ -9,7 +9,7 @@
 <div style="padding: 20%; text-align: center">
     <label for="farge">Skriv inn din favorittfarge her</label>
         <br>
-    <input id="farge" placeholder="Eks: Rød">
+    <input id="farge" placeholder="Eks: Green">
     <input type="button" id="farge" value="Send inn" onclick="brukerInput()">
         <br>
         <br>
@@ -21,9 +21,9 @@
 
 <script>
 
-    let farge = localStorage.farge;
-    document.body.style.backgroundColor = farge;
-    console.log("Den nåværende fargen er:" + farge)
+    let bgfarge = localStorage.getItem("bgcolor");
+    document.body.style.backgroundColor = bgfarge;
+    console.log("Den nåværende fargen er:" + bgfarge)
 
     // Henter brukerinput
     function brukerInput() {
@@ -36,17 +36,20 @@
     function inputToColor(inputEl) {
 
         // localStorage("key", "value") Gjør det lettere å lese, brukes istedenfor to linjer. //localStorage("farge", "inputEl")
-            localStorage.farge = inputEl
-            farge = localStorage.farge
-        console.log("Nettsidens nye farge: " + farge)
-        document.body.style.backgroundColor = farge;
+            localStorage.setItem("bgcolor", inputEl)
+            let bgfarge = localStorage.getItem("bgcolor")
+
+        //localStorage.farge = inputEl
+            //farge = localStorage.farge
+        console.log("Nettsidens nye farge:" + bgfarge)
+        document.body.style.backgroundColor = bgfarge;
          // localStorage.removeItem(farge)  // Fjerner localStorage for farge.
     }
 
     function resetColor () {
-        localStorage.removeItem("farge")
+        localStorage.removeItem("bgcolor")
         document.body.style.backgroundColor = "white";
-        console.log("Denne skal være udefinert:" + farge)
+        console.log("Denne skal være tom:" + bgfarge)
     }
 
 </script>
