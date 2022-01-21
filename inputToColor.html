@@ -3,23 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="./static/stilark.css">
+    <script rel="script" src="./static/javascript.js"></script>
 
 </head>
 <body>
-<div style="padding: 20%; text-align: center">
-    <label for="farge">Skriv inn din favorittfarge her</label>
-        <br>
-    <input id="farge" placeholder="Eks: Green">
-    <input type="button" id="farge" value="Send inn" onclick="brukerInput()">
-        <br>
-        <br>
-    <label for="nullstill">Nullstill bakgrunnsfarge</label>
-    <input type="button" id="nullstill" value="Nullstill" onclick="resetColor()">
 
-</div>
+    <ul id="nav-id" class="nav">
+    </ul>
+
+    <div style="padding: 20%; text-align: center">
+        <label for="farge">Skriv inn din favorittfarge her</label>
+            <br>
+        <input id="farge" placeholder="Eks: Green">
+        <input type="button" id="farge" value="Send inn" onclick="brukerInput()">
+            <br>
+            <br>
+        <label for="nullstill">Nullstill bakgrunnsfarge</label>
+        <input type="button" id="nullstill" value="Nullstill" onclick="resetColor()">
+
+    </div>
 </body>
 
 <script>
+
+    // Lager navbar
+    let nav = document.getElementById("nav-id")
+    // Looper det et bestemt antall ganger (navbar.length)
+    for(let navText = 0; navText < navbar.length; navText++) {
+        // Legger til elementene "li" og "a"
+        let bar = document.createElement("li");
+        let link = document.createElement("a")
+        // Gir klasse til elementet "li"
+        bar.className = "float";
+        // Gir tekstinnhold i elementet "li"
+        link.innerText = navbar[navText].name
+        link.href = navbar[navText].href
+        bar.appendChild(link)
+        nav.appendChild(bar)
+    }
+
 
     let bgfarge = localStorage.getItem("bgcolor");
     document.body.style.backgroundColor = bgfarge;
@@ -48,8 +71,8 @@
 
     function resetColor () {
         localStorage.removeItem("bgcolor")
-        document.body.style.backgroundColor = "white";
-        console.log("Denne skal være tom:" + bgfarge)
+        document.body.style.backgroundColor = bgfarge;
+        console.log("Denne skal være null:" + bgfarge)
     }
 
 </script>
