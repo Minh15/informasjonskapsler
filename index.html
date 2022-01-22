@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./static/stilark.css">
+    <script rel="script" src="./static/javascript.js"></script>
+
+</head>
+<body>
+
+<ul id="nav-id" class="nav">
+</ul>
+
+
+</body>
+
+
+<script>
+    // Lager navbar
+    let nav = document.getElementById("nav-id")
+    // Looper det et bestemt antall ganger (navbar.length)
+    for(let navText = 0; navText < navbar.length; navText++) {
+        // Legger til elementene "li" og "a"
+        let bar = document.createElement("li");
+        let link = document.createElement("a")
+        // Gir klasse til elementet "li"
+        bar.className = "float";
+        // Gir tekstinnhold i elementet "li"
+        link.innerText = navbar[navText].name
+        link.href = navbar[navText].href
+        bar.appendChild(link)
+        nav.appendChild(bar)
+    }
+
+</script>
+</html>
